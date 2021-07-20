@@ -63,6 +63,8 @@ After, call function to parse .ini file
 int ini_parse_data(const char *filename, struct ini_data *data);
 ```
 
+Example from my [project](https://github.com/r47t/suspend-process/blob/main/main.cpp#L111 "project")
+
 Example:
 ```cpp
 int main()
