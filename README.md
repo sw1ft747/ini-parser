@@ -63,7 +63,7 @@ After, call function to parse .ini file
 int ini_parse_data(const char *filename, struct ini_data *data);
 ```
 
-Example from my [project](https://github.com/r47t/suspend-process/blob/main/main.cpp#L111 "project")
+Example from my [project](https://github.com/r47t/suspend-process/blob/main/main.cpp#L129 "project")
 
 Example:
 ```cpp
@@ -101,7 +101,7 @@ void ini_free_data(struct ini_data *data, int is_allocated);
 ```
 
 # Reading data from .ini file
-There's two function to read data: directly from string and from hash table
+There's two functions to read data: directly from string and from hash table
 
 ```cpp
 int ini_read_string(const char *value, struct ini_datatype *datatype);
