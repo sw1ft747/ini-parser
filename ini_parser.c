@@ -322,7 +322,10 @@ int ini_parse(const char *filename, parse_type_t type, struct ini_data *data, in
 				void *realloc_mem = realloc(pszFileBuffer, bufferSize);
 
 				if (!realloc_mem)
+				{
+					fclose(file);
 					return 0;
+				}
 
 				pszFileBuffer = realloc_mem;
 				fgets(pszFileBuffer + length, bufferSize - length, file);
