@@ -23,8 +23,13 @@
 
 #pragma warning(disable : 6001) /* Using "uninitialized" memory blah blah */
 
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#ifndef _CRT_NONSTDC_NO_DEPRECATE
 #define _CRT_NONSTDC_NO_DEPRECATE
+#endif
 
 //-----------------------------------------------------------------------------
 
