@@ -38,7 +38,7 @@ extern "C" {
 // Size of hash table
 //-----------------------------------------------------------------------------
 
-#define INI_HASH_TABLE_SIZE 16
+#define INI_HASH_TABLE_SIZE 64
 
 //-----------------------------------------------------------------------------
 // Prefixes of comments
@@ -196,34 +196,36 @@ int ini_get_last_line();
 // Purpose: read data from string
 //
 // Params:
-// value - string to read
-// datatype - field type to read
+// @value - string to read
+// @datatype - field type to read
+// @fieldtype - directly read data type (-1 - ignore)
 //
 // Return value: 1 - success, 0 - failed to read data
 //-----------------------------------------------------------------------------
 
-int ini_read_string(const char *value, struct ini_datatype *datatype);
+int ini_read_string(const char *value, struct ini_datatype *datatype, int fieldtype);
 
 //-----------------------------------------------------------------------------
 // Purpose: read data from filled hash table
 //
 // Params:
-// data - pointer to hash table
-// section - name of section
-// key - name of parameter
-// datatype - field type to read
+// @data - pointer to hash table
+// @section - name of section
+// @key - name of parameter
+// @datatype - field type to read
+// @fieldtype - directly read data type (-1 - ignore)
 //
 // Return value: 1 - success, 0 - failed to read data
 //-----------------------------------------------------------------------------
 
-int ini_read_data(struct ini_data *data, const char *section, const char *key, struct ini_datatype *datatype);
+int ini_read_data(struct ini_data *data, const char *section, const char *key, struct ini_datatype *datatype, int fieldtype);
 
 //-----------------------------------------------------------------------------
 // Purpose: save data from .ini file in hash table
 //
 // Params:
-// filename - directory of file
-// data - pointer to hash table
+// @filename - directory of file
+// @data - pointer to hash table
 //
 // Return value: 1 - success, 0 - failed to parse file
 //-----------------------------------------------------------------------------
@@ -234,8 +236,8 @@ int ini_parse_data(const char *filename, struct ini_data *data);
 // Purpose: call a callback when parse .ini file
 //
 // Params:
-// filename - directory of file
-// handler - pointer to function handler
+// @filename - directory of file
+// @handler - pointer to function handler
 //
 // Return value: 1 - success, 0 - failed to parse file
 //-----------------------------------------------------------------------------
@@ -246,8 +248,8 @@ int ini_parse_handler(const char *filename, iniHandlerFn handler);
 // Purpose: free allocated memory for hash table
 //
 // Params:
-// data - pointer to hash table
-// is_allocated - hash table was allocated
+// @data - pointer to hash table
+// @is_allocated - hash table was allocated
 //-----------------------------------------------------------------------------
 
 void ini_free_data(struct ini_data *data, int is_allocated);

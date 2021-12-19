@@ -31,7 +31,7 @@ void MyFuncHandler(const char *pszSection, const char *pszKey, const char *pszVa
 	{
 		INI_FIELDTYPE_INT(datatype);
 		
-		if (ini_read_string(pszValue, &datatype))
+		if (ini_read_string(pszValue, &datatype, -1))
 		{
 			printf("SETTINGS: Port = %d\n", datatype.m_int);
 		}
@@ -84,7 +84,7 @@ int main()
 	ini_datatype datatype;
 	INI_FIELDTYPE_UINT32(datatype);
 
-	if (ini_read_data(&data, "CONTROLS", "Button", &datatype))
+	if (ini_read_data(&data, "CONTROLS", "Button", &datatype, -1))
 	{
 		printf("CONTROLS: Button = %X\n", data.m_uint32);
 	}
@@ -104,8 +104,8 @@ void ini_free_data(struct ini_data *data, int is_allocated);
 There's two functions to read data: directly from string and from hash table
 
 ```cpp
-int ini_read_string(const char *value, struct ini_datatype *datatype);
-int ini_read_data(struct ini_data *data, const char *section, const char *key, struct ini_datatype *datatype);
+int ini_read_string(const char *value, struct ini_datatype *datatype, int fieldtype);
+int ini_read_data(struct ini_data *data, const char *section, const char *key, struct ini_datatype *datatype, int fieldtype);
 ```
 
 I added structure to choose what type of data to read and write it union inside

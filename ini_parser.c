@@ -205,9 +205,9 @@ int ini_get_last_line()
 // Purpose: read data from string
 //-----------------------------------------------------------------------------
 
-int ini_read_string(const char *value, struct ini_datatype *datatype)
+int ini_read_string(const char *value, struct ini_datatype *datatype, int fieldtype)
 {
-	switch (datatype->fieldtype)
+	switch (fieldtype != -1 ? fieldtype : datatype->fieldtype)
 	{
 	case INI_FIELD_INTEGER:
 		datatype->m_int = atol(value);
@@ -260,7 +260,7 @@ int ini_read_string(const char *value, struct ini_datatype *datatype)
 // Purpose: read data from filled hash table
 //-----------------------------------------------------------------------------
 
-int ini_read_data(struct ini_data *data, const char *section, const char *key, struct ini_datatype *datatype)
+int ini_read_data(struct ini_data *data, const char *section, const char *key, struct ini_datatype *datatype, int fieldtype)
 {
 	const char *value = NULL;
 
@@ -281,7 +281,7 @@ int ini_read_data(struct ini_data *data, const char *section, const char *key, s
 	if (!value)
 		return 0;
 
-	return ini_read_string(value, datatype);
+	return ini_read_string(value, datatype, fieldtype);
 }
 
 //-----------------------------------------------------------------------------
