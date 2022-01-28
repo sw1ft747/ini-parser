@@ -38,7 +38,7 @@ extern "C" {
 // Size of hash table
 //-----------------------------------------------------------------------------
 
-#define INI_HASH_TABLE_SIZE 64
+#define INI_HASH_TABLE_SIZE 63
 
 //-----------------------------------------------------------------------------
 // Prefixes of comments
